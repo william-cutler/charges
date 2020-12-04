@@ -1,6 +1,5 @@
-package charges.model;
+package charges.simulation.model;
 
-import java.awt.geom.Point2D;
 import java.util.List;
 
 /**
@@ -8,13 +7,13 @@ import java.util.List;
  * dynamics of a system of charged particles. Calculates electrostatic interactions to produce the
  * next state of the system.
  */
-public interface IChargeSimulation<T> {
+public interface IChargeSimulation {
 
   boolean simulationOver();
 
   void advance();
 
-  List<T> getComponents();
+  List<Component> getComponents();
 
-  Point2D getPlayerPosition();
+
 }
