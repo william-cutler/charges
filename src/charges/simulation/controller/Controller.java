@@ -5,7 +5,7 @@ import charges.setup.model.IChargeSetup;
 import charges.setup.controller.ISetupFeatures;
 import charges.setup.view.ISetupView;
 
-public class Controller implements IChargeController {
+public abstract class Controller implements IChargeController {
   private ISetupView setupView;
   private IChargeSetup setupModel;
   private ISetupFeatures setupFeatures;

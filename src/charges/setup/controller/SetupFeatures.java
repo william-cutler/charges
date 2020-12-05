@@ -1,6 +1,6 @@
 package charges.setup.controller;
 
-import charges.simulation.model.Component;
+import charges.setup.model.Component;
 import java.awt.geom.Point2D;
 
 public class SetupFeatures implements ISetupFeatures {

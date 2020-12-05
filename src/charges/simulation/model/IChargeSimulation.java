@@ -1,5 +1,6 @@
 package charges.simulation.model;
 
+import charges.setup.model.Component;
 import java.util.List;
 
 /**

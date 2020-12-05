@@ -1,9 +1,10 @@
 package charges.setup.model;
 
-import charges.simulation.model.Component;
+import charges.Posn;
+import charges.Vector2D;
 import charges.simulation.model.IChargeSimulation;
-import java.awt.geom.Dimension2D;
 import java.awt.geom.Point2D;
+import java.util.List;
 
 /**
  * An editable container for all of the components in a given simulation. Components can be added,
@@ -11,23 +12,25 @@ import java.awt.geom.Point2D;
  */
 public interface IChargeSetup {
 
-  Dimension2D getBounds();
+  Vector2D getBounds();
 
-  void addComponent(Component component, Point2D position);
+  void addStationaryCharge(Vector2D position, double charge);
 
-  void deleteComponent(Component component);
+  void deleteStationaryChargeAt(Vector2D selectedPosition);
 
-  void moveComponent(Component component, Point2D newPosition);
+  void moveStationaryChargeTo(Vector2D selectedPosition, Vector2D newPosition);
 
-  Component getComponentAt(Point2D position);
+  ICharge getStationaryChargeAt(Vector2D position);
 
   IChargeSimulation buildSimulation();
 
-  void setPlayerPosition(Point2D position);
+  void setPlayerPosition(Posn position);
 
   void setPlayerCharge(double value);
 
-  void setPlayerVelocity(Point2D velocity);
+  void setPlayerVelocity(Posn velocity);
 
-  Point2D getPlayerPosition();
+  IPlayer getPlayer();
+
+  List<ICharge> getComponents();
 }
