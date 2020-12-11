@@ -1,9 +1,9 @@
 package charges.setup.model;
 
-import charges.Dimension;
-import charges.ListUtil;
-import charges.Posn;
-import charges.Vector2D;
+import charges.util.Dimension;
+import charges.util.ListUtil;
+import charges.util.Posn;
+import charges.util.Vector2D;
 import charges.simulation.model.IChargeSimulation;
 import java.util.ArrayList;
 import java.util.List;

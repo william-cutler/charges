@@ -1,9 +1,8 @@
 package charges.setup.model;
 
-import charges.Posn;
-import charges.Vector2D;
+import charges.util.Posn;
+import charges.util.Vector2D;
 import charges.simulation.model.IChargeSimulation;
-import java.awt.geom.Point2D;
 import java.util.List;
 
 /**

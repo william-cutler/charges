@@ -1,12 +1,24 @@
 package charges.setup.controller;
 
 import charges.setup.model.Component;
-import java.awt.geom.Point2D;
+import charges.setup.model.PointCharge;
+import charges.setup.view.ISetupView;
+import charges.util.Vector2D;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SetupFeatures implements ISetupFeatures {
 
+  List<Component> componentList;
+  ISetupView view;
+
+  public SetupFeatures(ISetupView view) {
+    this.componentList = new ArrayList<>();
+    this.view = view;
+    view.setFeatures(this);
+  }
   @Override
-  public void selectComponentAt(Point2D position) {
+  public void selectComponentAt(Vector2D position) {
 
   }
 
@@ -16,17 +28,24 @@ public class SetupFeatures implements ISetupFeatures {
   }
 
   @Override
-  public void addComponent(Component toAdd, Point2D position) {
+  public void addComponent(Component toAdd) {
 
   }
 
   @Override
-  public void moveActiveComponent(Point2D newPosition) {
+  public void addCharge(Vector2D position, double charge) {
+    System.out.println("Add charge " + charge);
+    this.componentList.add(new PointCharge(position, charge));
+    this.view.displayComponents(this.componentList);
+  }
+
+  @Override
+  public void moveActiveComponent(Vector2D newPosition) {
 
   }
 
   @Override
-  public void setPlayerPosition(Point2D position) {
+  public void setPlayerPosition(Vector2D position) {
 
   }
 
@@ -36,7 +55,7 @@ public class SetupFeatures implements ISetupFeatures {
   }
 
   @Override
-  public void setPlayerVelocity(Point2D velocity) {
+  public void setPlayerVelocity(Vector2D velocity) {
 
   }
 }

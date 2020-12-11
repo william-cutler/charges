@@ -1,4 +1,4 @@
-package charges;
+package charges.util;
 
 /** A width and height dimension represented by positive values for x and y respectively. */
 public class Dimension extends Posn {

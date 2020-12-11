@@ -1,21 +1,25 @@
 package charges.setup.controller;
 
 import charges.setup.model.Component;
+import charges.util.Posn;
+import charges.util.Vector2D;
 import java.awt.geom.Point2D;
 
 public interface ISetupFeatures {
 
-  void selectComponentAt(Point2D position);
+  void selectComponentAt(Vector2D position);
 
   void removeActiveComponent();
 
-  void addComponent(Component toAdd, Point2D position);
+  void addComponent(Component toAdd);
 
-  void moveActiveComponent(Point2D newPosition);
+  void addCharge(Vector2D position, double charge);
 
-  void setPlayerPosition(Point2D position);
+  void moveActiveComponent(Vector2D newPosition);
+
+  void setPlayerPosition(Vector2D position);
 
   void setPlayerCharge(double value);
 
-  void setPlayerVelocity(Point2D velocity);
+  void setPlayerVelocity(Vector2D velocity);
 }

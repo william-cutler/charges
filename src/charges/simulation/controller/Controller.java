@@ -14,7 +14,7 @@ public abstract class Controller implements IChargeController {
   public Controller(ISetupView setupView, IChargeSetup setupModel) {
     this.setupView = setupView;
     this.setupModel = setupModel;
-    this.setupFeatures = new SetupFeatures();
+    this.setupFeatures = new SetupFeatures(setupView);
     this.simFeatures = new SimulationFeatures();
 
     this.setupView.setFeatures(this.setupFeatures);

@@ -1,6 +1,6 @@
 package charges.setup.model;
 
-import charges.Vector2D;
+import charges.util.Vector2D;
 
 public interface IPlayer extends ICharge {
   Vector2D getVelocity();

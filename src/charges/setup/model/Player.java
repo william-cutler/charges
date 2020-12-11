@@ -1,12 +1,12 @@
 package charges.setup.model;
 
-import charges.Vector2D;
+import charges.util.Vector2D;
 
 public class Player extends PointCharge implements IPlayer {
   private Vector2D velocity;
 
   public Player(Vector2D position, double charge, Vector2D velocity) {
-    super(charge, position);
+    super(position, charge);
     this.velocity = velocity;
   }
 

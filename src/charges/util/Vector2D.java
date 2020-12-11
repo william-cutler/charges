@@ -1,6 +1,4 @@
-package charges;
-
-import java.util.Vector;
+package charges.util;
 
 /** A vector that can be represented by integral cartesian coordinates. */
 public interface Vector2D {

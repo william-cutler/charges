@@ -1,4 +1,4 @@
-package charges;
+package charges.util;
 
 import java.util.ArrayList;
 import java.util.Comparator;
