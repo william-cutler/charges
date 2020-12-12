@@ -11,6 +11,11 @@ public class Player extends PointCharge implements IPlayer {
   }
 
   @Override
+  public <T> T accept(ComponentVisitor<T> c) {
+    return c.visitPlayer(this);
+  }
+
+  @Override
   public Vector2D getVelocity() {
     return this.velocity;
   }

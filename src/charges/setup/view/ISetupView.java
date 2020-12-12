@@ -8,7 +8,7 @@ public interface ISetupView {
 
   void setFeatures(ISetupFeatures features);
 
-  void displayComponents(List<Component> components);
+  void displayComponents(List<? extends Component> components);
 
   void selectComponent(Component c);
 

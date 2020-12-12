@@ -20,4 +20,6 @@ public interface Vector2D {
   boolean lessThan(Vector2D other);
 
   double distanceTo(Vector2D other);
+
+  Vector2D displacementTo(Vector2D other);
 }

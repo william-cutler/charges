@@ -43,6 +43,11 @@ public class Posn implements Vector2D {
   }
 
   @Override
+  public Vector2D displacementTo(Vector2D other) {
+    return new Posn(other.getX() - this.getX(), other.getY() - this.getY());
+  }
+
+  @Override
   public boolean equals(Object obj) {
     if (obj instanceof Posn) {
       Posn pos = (Posn) obj;

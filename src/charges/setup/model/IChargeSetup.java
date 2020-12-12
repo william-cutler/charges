@@ -15,9 +15,9 @@ public interface IChargeSetup {
 
   void addStationaryCharge(Vector2D position, double charge);
 
-  void deleteStationaryChargeAt(Vector2D selectedPosition);
+  void deleteComponent(Component c);
 
-  void moveStationaryChargeTo(Vector2D selectedPosition, Vector2D newPosition);
+  void moveComponentTo(Component c, Vector2D newPosition);
 
   ICharge getStationaryChargeAt(Vector2D position);
 

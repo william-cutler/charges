@@ -3,9 +3,12 @@ package charges.setup.view;
 import charges.setup.controller.ISetupFeatures;
 import charges.setup.model.Component;
 import charges.setup.model.PointCharge;
+import charges.simulation.controller.Features;
 import charges.util.Posn;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -26,8 +29,6 @@ public class SetupView extends JFrame implements ISetupView {
   private JRadioButton createPositive;
   private JRadioButton createNegative;
   private ButtonGroup chargeTypeGroup;
-
-  private Component activeComponent;
 
   public SetupView(String caption) {
     this.setLayout(new BorderLayout());
@@ -54,6 +55,7 @@ public class SetupView extends JFrame implements ISetupView {
     this.add(chargeDisplayPanel, BorderLayout.CENTER);
     this.add(buttonPanel, BorderLayout.PAGE_END);
     this.setSize(new Dimension(1000, 1000));
+    this.setTitle(caption);
     this.setVisible(true);
     this.pack();
   }
@@ -66,17 +68,19 @@ public class SetupView extends JFrame implements ISetupView {
     this.deleteSelectedChargeButton.addActionListener(
         (evt) -> this.features.removeActiveComponent());
     this.simulateButton.addActionListener((evt) -> System.out.println("Begin simulation."));
+    this.chargeDisplayPanel.setFeatures(features);
   }
 
   @Override
-  public void displayComponents(List<Component> components) {
+  public void displayComponents(List<? extends Component> components) {
     this.chargeDisplayPanel.setComponents(components);
     this.chargeDisplayPanel.repaint();
   }
 
   @Override
   public void selectComponent(Component c) {
-    this.activeComponent = c;
+    this.chargeDisplayPanel.setActive(c);
+    this.chargeDisplayPanel.repaint();
   }
 
   private void addCharge() {

@@ -22,6 +22,11 @@ public class PointCharge implements ICharge {
   }
 
   @Override
+  public <T> T accept(ComponentVisitor<T> v) {
+    return v.visitCharge(this);
+  }
+
+  @Override
   public double getNetCharge() {
     return this.charge;
   }

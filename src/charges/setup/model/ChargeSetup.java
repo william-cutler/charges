@@ -35,21 +35,22 @@ public class ChargeSetup implements IChargeSetup {
   }
 
   @Override
-  public void deleteStationaryChargeAt(Vector2D selectedPosition) {
-    int indexOfCharge = this.chargeIndexAtPosition(selectedPosition);
-    this.environment.remove(indexOfCharge);
+  public void deleteComponent(Component c) {
+    this.environment.remove(c);
   }
 
   @Override
-  public void moveStationaryChargeTo(Vector2D selectedPosition, Vector2D newPosition) {
-    int indexOfCharge = this.chargeIndexAtPosition(selectedPosition);
+  public void moveComponentTo(Component c, Vector2D newPosition) {
     this.verifyPosition(newPosition);
-    this.environment.get(indexOfCharge).setPosition(newPosition);
+    c.setPosition(newPosition);
   }
 
   @Override
   public ICharge getStationaryChargeAt(Vector2D selectedPosition) {
     int indexOfCharge = this.chargeIndexAtPosition(selectedPosition);
+    if(indexOfCharge == -1) {
+      return null;
+    }
     return this.environment.get(indexOfCharge);
   }
 
@@ -90,7 +91,7 @@ public class ChargeSetup implements IChargeSetup {
    * @throws IllegalArgumentException if the position is not within the proper bounds.
    */
   private void verifyPosition(Vector2D pos) throws IllegalArgumentException {
-    if(! new Posn(0, 0).lessThan(pos) && pos.lessThan(this.dimensions)) {
+    if(! new Posn(-1, -1).lessThan(pos) && pos.lessThan(this.dimensions)) {
       throw new IllegalArgumentException("Position: " + pos + " is out of bounds.");
     }
   }
@@ -101,12 +102,14 @@ public class ChargeSetup implements IChargeSetup {
    * @throws IllegalArgumentException if the position does not correspond to a charge in the environment.
    */
   private int chargeIndexAtPosition(Vector2D pos) throws IllegalArgumentException {
-    int indexOfCharge = ListUtil.indexSatisfying(this.environment, new PositionWithinTolerance(pos));
-    if(indexOfCharge < 0) {
-      throw new IllegalArgumentException("No charge at position.");
-    } else {
-      return indexOfCharge;
-    }
+//    int indexOfCharge = ListUtil.indexSatisfying(this.environment, new PositionWithinTolerance(pos));
+//    if(indexOfCharge < 0) {
+//      return null;
+//      throw new IllegalArgumentException("No charge at position.");
+//    } else {
+//      return indexOfCharge;
+//    }
+    return ListUtil.indexSatisfying(this.environment, new PositionWithinTolerance(pos));
   }
 
   /**
@@ -122,7 +125,13 @@ public class ChargeSetup implements IChargeSetup {
 
     @Override
     public boolean test(ICharge charge) {
-      return this.position.distanceTo(charge.getPosition()) < selectionTolerance;
+      Vector2D chargePosition = charge.getPosition();
+      return inclusiveBetween(chargePosition.getX(), position.getX(), chargePosition.getX() + selectionTolerance)
+          && inclusiveBetween(chargePosition.getY(), position.getY(), chargePosition.getY() + selectionTolerance);
+    }
+
+    private boolean inclusiveBetween(double low, double med, double high) {
+      return (low <= med && med <= high);
     }
   }
 }
